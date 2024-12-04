@@ -3,14 +3,14 @@ This project can be used to control one or more Bitcraze Crazyflies in ROS using
 
 # Dependencies
 To use this project, you will need
-- Ubuntu (tested on 16.04)  
-- Python (tested on 2.7) Note: ROS 1 is designed for Python 2, not Python 3
-- a ROS distribution (tested on Kinetic Kame)
+- Ubuntu 20.04
+- Python 3
+- ROS 1 Noetic
 - ROS dependencies for building packages
 - Bitcraze crazyflie-lib-python
 
 
-To install ROS and the dependences for building packages, please follow the [official instructions](http://wiki.ros.org/ROS/Installation).
+To install ROS and the dependences for building packages, please follow the [official instructions](http://wiki.ros.org/ROS/Installation). Install ROS Noetic
 
 
 It is also highly reccommended that you install the Bitcraze [Crazyflie Client GUI](https://github.com/bitcraze/crazyflie-clients-pthon). This GUI provides a means to debug Crazyflies, modify their link URI, and more.
@@ -27,9 +27,9 @@ sudo pip install --upgrade pip
 Now clone crazyflie-lib-python and install it in your Python 2 environment
 
 ```
-git clone https://github.com/bitcraze/crazyflie-lib-python
+git clone https://github.com/bitcraze/crazyflie-lib-python.git
 cd crazyflie-lib-python
-sudo python -m pip install .
+pip3 install -e .
 cd ..
 ```
 
@@ -39,19 +39,24 @@ In order to use the Crazyradio without being root some permissions need to be ad
 
 ```
 sudo groupadd plugdev
-sudo usermod -a -G plugdev <username>
+sudo usermod -a -G plugdev $USER
 ```
 
-Create a file named
+Copy-paste the following in your console, this will create the file /etc/udev/rules.d/99-bitcraze.rules:
 
+```
+cat <<EOF | sudo tee /etc/udev/rules.d/99-bitcraze.rules > /dev/null
+# Crazyradio (normal operation)
+SUBSYSTEM=="usb", ATTRS{idVendor}=="1915", ATTRS{idProduct}=="7777", MODE="0664", GROUP="plugdev"
+# Bootloader
+SUBSYSTEM=="usb", ATTRS{idVendor}=="1915", ATTRS{idProduct}=="0101", MODE="0664", GROUP="plugdev"
+# Crazyflie (over USB)
+SUBSYSTEM=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5740", MODE="0664", GROUP="plugdev"
+EOF
+```
 
-`/etc/udev/rules.d/99-crazyradio.rules`
+Restart your computer/VM to load these changes
 
-
-and add the following line to it;
-
-
-`SUBSYSTEM=="usb", ATTRS{idVendor}=="1915", ATTRS{idProduct}=="7777", MODE="0664", GROUP="plugdev"`
 
 # Installation
 To install this project, open a terminal to create a catkin workspace
@@ -66,9 +71,10 @@ cd catkin_ws/src
 
 then clone this repository;
 
-
-`git clone https://github.com/jgsuw/rospy_crazyflie.git`
-
+```
+git clone https://github.com/jgsuw/rospy_crazyflie.git
+git checkout python3-migration
+```
 
 Now change directory back to `catkin_ws` and build this package.
 
