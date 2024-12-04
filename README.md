@@ -24,11 +24,12 @@ sudo pip install --upgrade pip
 ```
 
 
-Now clone crazyflie-lib-python and install it in your Python 3 environment
+Now clone crazyflie-lib-python and install it in your Python 3 environment. We will use an older version of crazyflie-lib-python for compatability.
 
 ```
 git clone https://github.com/bitcraze/crazyflie-lib-python.git
 cd crazyflie-lib-python
+git checkout 0.1.25
 pip3 install -e .
 cd ..
 ```
@@ -73,6 +74,7 @@ then clone this repository;
 
 ```
 git clone https://github.com/jgsuw/rospy_crazyflie.git
+cd rospy_crazyflie/
 git checkout python3-migration
 ```
 
@@ -80,7 +82,7 @@ Now change directory back to `catkin_ws` and build this package.
 
 
 ```
-cd ..
+cd ../..
 catkin_make
 ```
 
