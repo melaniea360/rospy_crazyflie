@@ -10,13 +10,13 @@ To use this project, you will need
 - Bitcraze crazyflie-lib-python
 
 
-To install ROS and the dependences for building packages, please follow the [official instructions](http://wiki.ros.org/ROS/Installation). Install ROS Noetic
+To install ROS Noetic and the dependences for building packages, please follow the [official instructions](http://wiki.ros.org/ROS/Installation).
 
 
 It is also highly reccommended that you install the Bitcraze [Crazyflie Client GUI](https://github.com/bitcraze/crazyflie-clients-pthon). This GUI provides a means to debug Crazyflies, modify their link URI, and more.
 
 ## Installing crazyflie-lib-python
-To install this dependency, first upgrade your pip wheel for Python 2
+To install this dependency, first upgrade your pip wheel for Python 3
 
 ```
 sudo apt install python-pip
@@ -24,7 +24,7 @@ sudo pip install --upgrade pip
 ```
 
 
-Now clone crazyflie-lib-python and install it in your Python 2 environment
+Now clone crazyflie-lib-python and install it in your Python 3 environment
 
 ```
 git clone https://github.com/bitcraze/crazyflie-lib-python.git
