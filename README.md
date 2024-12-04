@@ -95,6 +95,7 @@ In order to avoid having to source this file whenever you open a new terminal, y
 
 Make sure to replace `<catkin workspace path>` with the actual path of your catkin workspace. 
 
+## Installing crazyflie-clients-python
 
 It is also highly reccommended that you install the Bitcraze [Crazyflie Client GUI](https://github.com/bitcraze/crazyflie-clients-pthon). This GUI provides a means to debug Crazyflies, modify their link URI, and more. Follow the instructions below to use a compatable version.
 
