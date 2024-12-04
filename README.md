@@ -13,8 +13,6 @@ To use this project, you will need
 To install ROS Noetic and the dependences for building packages, please follow the [official instructions](http://wiki.ros.org/ROS/Installation).
 
 
-It is also highly reccommended that you install the Bitcraze [Crazyflie Client GUI](https://github.com/bitcraze/crazyflie-clients-pthon). This GUI provides a means to debug Crazyflies, modify their link URI, and more.
-
 ## Installing crazyflie-lib-python
 To install this dependency, first upgrade your pip wheel for Python 3
 
@@ -96,5 +94,15 @@ In order to avoid having to source this file whenever you open a new terminal, y
 `source <catkin workspace path>/devel/setup.bash`
 
 Make sure to replace `<catkin workspace path>` with the actual path of your catkin workspace. 
+
+
+It is also highly reccommended that you install the Bitcraze [Crazyflie Client GUI](https://github.com/bitcraze/crazyflie-clients-pthon). This GUI provides a means to debug Crazyflies, modify their link URI, and more. Follow the instructions below to use a compatable version.
+
+```
+git clone https://github.com/bitcraze/crazyflie-clients-python
+cd crazyflie-clients-python
+git checkout 2024.7.1
+pip3 install -e .
+```
 
 # [View The Quickstart Guide](https://github.com/JGSuw/rospy_crazyflie/wiki/Quick-Start-Guide)
