@@ -19,7 +19,7 @@ It is also highly reccommended that you install the Bitcraze [Crazyflie Client G
 To install this dependency, first upgrade your pip wheel for Python 3
 
 ```
-sudo apt install python-pip
+sudo apt install python3-pip
 sudo pip install --upgrade pip
 ```
 
