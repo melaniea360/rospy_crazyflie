@@ -42,7 +42,7 @@ contain an 'eag.eag' log variable.
 import rospy
 import time
 import sys
-from rospy_crazyflie.client import Client as CrazyflieClient 
+import rospy_crazyflie.client
 from rospy_crazyflie.srv import *
 from rospy_crazyflie.msg import *
 
@@ -50,8 +50,8 @@ if __name__ == "__main__":
     rospy.init_node('eag_example')
 
     # Connect to a Crazyflie on the server
-    crazyflies = crazyflie_client.get_crazyflies('/crazyflie_server')
-    client = CrazyflieClient(crazyflies[0])
+    crazyflies = rospy_crazyflie.client.get_crazyflies('/crazyflie_server')
+    client = rospy_crazyflie.client.Client(crazyflies[0])
 
     """
     @config_name    name given to the log configuration
@@ -67,7 +67,7 @@ if __name__ == "__main__":
     """
     config_name = 'eag'
     variables = [LogVariable('eag.eag', 'float')]
-    period_in_ms = 10.
+    period_in_ms = 10
 
     def eag_callback(data, timestamp):
         # This is called by the CrazyflieClient object when new data is available
